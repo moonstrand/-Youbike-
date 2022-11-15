@@ -1,0 +1,62 @@
+@mixin pad-xl {
+  @media (max-width: 1181px) {
+    @content
+  }
+};
+
+@mixin pad-l {
+  @media (max-width: 1025px) {
+    @content
+  }
+};
+
+@mixin pad-m {
+  @media (max-width: 821px) {
+    @content
+  }
+};
+
+@mixin mobile-m {
+  @media (max-width: 415px) {
+    @content
+  }
+};
+
+@mixin mobile-s {
+  @media (max-width: 391px) {
+    @content
+  }
+};
+
+.bg {
+  background: linear-gradient(rgba(0, 0, 0, 0.55),rgba(0, 0, 0, 0.35)), url(https://storage.googleapis.com/vue-course-api.appspot.com/strand-api/1668068424389.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=qIBP6wGRVZIgqtzfIkuprN8h%2Fk55BJS94Ui7SckfLz14j5Chl7Ma9myk2XhKrJNebVZMOhXDjFIX15VA3PSg8sUF2CjEMjmKp0fq8AozObWcfRMMw4CEY%2FhJl3bneTG8SFN6s5N2e7F359qJkQF5Auj8EaEGDZt7f%2F0FrrsC%2BrqD%2BJAXit3rOLNH%2Be4LD9dJPrJ9EPX33AMbBe%2FNvFhI0NsG3bEQaG86bY%2BNH9l1acEFmmdmZx2lROmQYEZzaakCvynTGbrUgUX%2FukxkK7RidHl%2Fjb%2FAUGPl9SNol7qgq4yhs2oyifdlJYo5ok%2B3AW6HCUhfKV8EC00LadT743cA8g%3D%3D);
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+}
+
+.site-info {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  .site-status {
+    font-size: 23px;
+    @include mobile-m {
+      font-size: 16px;
+    }
+  }
+}
+
+.notfound {
+  min-height: 60vh;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  .bi.bi-emoji-dizzy-fill {
+    font-size: 100px;
+  }
+}
+
+.input-group input {
+  margin-left: -10px;
+}
