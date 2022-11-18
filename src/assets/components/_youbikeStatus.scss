@@ -34,12 +34,18 @@
   background-attachment: fixed;
   background-repeat: no-repeat;
   min-height: 100vh;
+  .container {
+    min-height: 100vh;
+  }
 }
 
 .site-info {
   padding: 20px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
+  @include mobile-m {
+    padding: 15px;
+  }
   .site-status {
     font-size: 23px;
     @include mobile-m {
@@ -48,7 +54,7 @@
   }
 }
 
-.notfound {
+.err-msg {
   min-height: 60vh;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
@@ -59,4 +65,13 @@
 
 .input-group input {
   margin-left: -10px;
+}
+
+.footer-link {
+  text-decoration: none;
+  color: #fff;
+  transition: 0.3s ease;
+  &:hover {
+    color: #777;
+  }
 }

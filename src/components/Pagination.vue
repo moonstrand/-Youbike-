@@ -17,16 +17,12 @@
       </li>
       <li
         class="page-item"
-        :class="{ 'active': i == page.currentPage }"
-        v-for="i in page.pageTotal"
+        :class="{ active: i == page.currentPage }"
+        v-for="i in pages"
         :key="i"
         @click="switchPage(i)"
       >
-        <a
-          class="page-link"
-          href="#"
-          >{{ i }}</a
-        >
+        <a class="page-link" href="#">{{ i }}</a>
       </li>
       <li class="page-item">
         <a
@@ -52,6 +48,35 @@ export default {
   methods: {
     switchPage(i) {
       this.$emit('switch-page', i);
+    },
+  },
+  computed: {
+    startPage() {
+      if (this.page.currentPage === 1) return 1;
+      if (this.page.currentPage === this.page.pageTotal) {
+        if (this.page.pageTotal - 5 <= 0) {
+          return 1;
+        }
+        return this.page.pageTotal - 5;
+      }
+      return Math.max(this.page.currentPage - 4, 1);
+    },
+    endPage() {
+      const limitPage = this.startPage + this.page.maxPage;
+      if (limitPage < this.page.pageTotal) {
+        return limitPage;
+      }
+      if (limitPage >= this.page.pageTotal) {
+        return this.page.pageTotal;
+      }
+      return limitPage;
+    },
+    pages() {
+      const range = [];
+      for (let i = this.startPage; i <= this.endPage; i += 1) {
+        range.push(i);
+      }
+      return range;
     },
   },
 };
