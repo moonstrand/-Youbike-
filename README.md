@@ -41,5 +41,5 @@ https://moonstrand.github.io/youbike-taoyuan/
 ### API ###
 [TYCG OPEN DATA API](https://data.tycg.gov.tw/opendata/api-docs)
 
-### 背景、橫幅圖片來源 ###
+### 背景圖片來源 ###
 [Unsplash](https://unsplash.com/)
