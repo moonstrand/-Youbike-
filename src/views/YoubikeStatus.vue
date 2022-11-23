@@ -66,7 +66,7 @@
             </p>
             <p
               class="site-status text-success fw-bold mb-xl-0 mb-2"
-              v-if="(site.sbi / site.tot) * 100 > 40"
+              v-if="(site.sbi / site.tot) * 100 >= 40"
             >
               供車狀況：充足
             </p>
@@ -81,7 +81,7 @@
             </p>
             <p
               class="site-status text-danger fw-bold mb-xl-0 mb-2"
-              v-else-if="(site.sbi / site.tot) * 100 < 15"
+              v-else-if="(site.sbi / site.tot) * 100 <= 15"
             >
               供車狀況：不足
             </p>
