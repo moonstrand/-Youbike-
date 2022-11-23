@@ -1,5 +1,5 @@
 # 桃園微笑單車站點資訊 #
-以vue框架開發查詢桃園內所有站點資訊，串接桃園公共自行車即時服務資料，撈取桃園各站點資料並實作篩選地區以及關鍵字功能。
+以Vue框架開發，供查詢桃園內所有站點資訊，串接桃園公共自行車即時服務資料，撈取桃園各站點資料並實作篩選地區以及關鍵字功能。
 
 ### Demo ###
 https://moonstrand.github.io/youbike-taoyuan/
@@ -41,5 +41,5 @@ https://moonstrand.github.io/youbike-taoyuan/
 ### API ###
 [TYCG OPEN DATA API](https://data.tycg.gov.tw/opendata/api-docs)
 
-### 背景、橫幅圖片來源 ###
+### 背景圖片來源 ###
 [Unsplash](https://unsplash.com/)
