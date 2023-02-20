@@ -43,6 +43,7 @@
   padding: 20px;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
+  cursor: pointer;
   @include mobile-m {
     padding: 15px;
   }
@@ -51,6 +52,9 @@
     @include mobile-m {
       font-size: 16px;
     }
+  }
+  &:hover {
+    background-color: rgba(255, 255, 255, 1);
   }
 }
 

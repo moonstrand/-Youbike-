@@ -95,8 +95,8 @@
             <div class="col">
               <p v-if="site.bemp >= 0">目前空位數量：{{ site.bemp }}</p>
               <p v-else>目前空位數量：0</p>
-              <p v-if="site.act" class="text-success">站點狀態：啟用中</p>
-              <p v-else class="text-danger">站點狀態：無法使用</p>
+              <p v-if="site.act != 1" class="text-danger">站點狀態：無法使用</p>
+              <p v-else class="text-success">站點狀態：啟用中</p>
             </div>
           </div>
           <div class="progress">
@@ -186,6 +186,7 @@ export default {
       this.$http
         .get(api)
         .then((res) => {
+          console.log(res.data);
           this.site = Object.values(res.data.retVal);
           const allArea = this.site.map((value) => value.sarea);
           this.area = allArea.filter((value, index, arr) => arr.indexOf(value) === index);
