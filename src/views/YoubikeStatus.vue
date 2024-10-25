@@ -1,7 +1,7 @@
 <template>
   <div class="bg">
     <div class="container py-4">
-      <h1 class="text-center text-light fw-bold">桃園微笑單車站點資訊</h1>
+      <h1 class="text-center text-light fw-bold">台中微笑單車站點資訊</h1>
       <div class="row justify-content-center py-4">
         <div class="col-xl-3 col-md-4 col-6">
           <div class="input-group mb-3 ps-sm-0 ps-2">
@@ -182,18 +182,20 @@ export default {
   },
   methods: {
     getData() {
-      const api = 'https://data.tycg.gov.tw/api/v1/dump/datastore/a1b4714b-3b75-4ff8-a8f2-cc377e4eaa0f';
+      const api = 'https://datacenter.taichung.gov.tw/swagger/OpenData/86dfad5c-540c-4479-bb7d-d7439d34eeb1';
       this.$http
         .get(api)
         .then((res) => {
           console.log(res.data);
           this.site = Object.values(res.data.retVal);
+          this.site = this.site.map((value) => ({ ...value, sna: value.sna.replace('YouBike2.0_', '') }));
           const allArea = this.site.map((value) => value.sarea);
           this.area = allArea.filter((value, index, arr) => arr.indexOf(value) === index);
           this.setPage(1);
         })
         .catch((err) => {
           if (err) {
+            console.log(err);
             this.errStatus = true;
           }
         });
