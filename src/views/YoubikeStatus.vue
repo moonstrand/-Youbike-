@@ -5,84 +5,46 @@
       <div class="row justify-content-center py-4">
         <div class="col-xl-3 col-md-4 col-6">
           <div class="input-group mb-3 ps-sm-0 ps-2">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="站點關鍵字"
-              aria-label="站點關鍵字"
-              aria-describedby="basic-addon2"
-              v-model="search"
-            />
-            <span
-              class="input-group-text bg-secondary border-0"
-              id="basic-addon2"
-              disabled
-              v-if="!hasSearch"
-            >
+            <input type="text" class="form-control" placeholder="站點關鍵字" aria-label="站點關鍵字"
+              aria-describedby="basic-addon2" v-model="search" />
+            <span class="input-group-text bg-secondary border-0" id="basic-addon2" disabled v-if="!hasSearch">
               <i class="bi bi-search text-light"></i>
             </span>
-            <button
-              class="btn btn-secondary"
-              type="button"
-              id="button-addon2"
-              v-if="hasSearch"
-              @click="clearSearch"
-            >
+            <button class="btn btn-secondary" type="button" id="button-addon2" v-if="hasSearch" @click="clearSearch">
               <i class="bi bi-x-lg"></i>
             </button>
           </div>
         </div>
-        <div
-          class="
+        <div class="
             col-xl-4 col-md-5 col-6
             d-flex
             justify-content-end
             align-items-start
             pe-sm-0
-          "
-        >
-          <select
-            class="form-select w-50"
-            :class="{ 'bg-disabled': this.hasSearch }"
-            aria-label="Default select example"
-            v-model="filterArea"
-            :disabled="hasSearch"
-            @change="getData"
-          >
+          ">
+          <select class="form-select w-50" :class="{ 'bg-disabled': this.hasSearch }"
+            aria-label="Default select example" v-model="filterArea" :disabled="hasSearch" @change="getData">
             <option selected>全部</option>
             <option v-for="area in area" :key="area" :value="area">
               {{ area }}
             </option>
           </select>
         </div>
-        <div
-          class="site-info col-xl-7 col-md-9 mb-4"
-          v-for="site in pageData"
-          :key="site.sna"
-        >
+        <div class="site-info col-xl-7 col-md-9 mb-4" v-for="site in pageData" :key="site.sna">
           <div class="d-flex flex-md-row justify-content-between flex-column">
             <p class="h4 fw-bold mb-xl-0 mb-2">
               {{ site.sna }}
             </p>
-            <p
-              class="site-status text-success fw-bold mb-xl-0 mb-2"
-              v-if="(site.sbi / site.tot) * 100 >= 40"
-            >
+            <p class="site-status text-success fw-bold mb-xl-0 mb-2" v-if="(site.sbi / site.tot) * 100 >= 40">
               供車狀況：充足
             </p>
-            <p
-              class="site-status text-tight fw-bold mb-xl-0 mb-2"
-              v-else-if="
-                (site.sbi / site.tot) * 100 < 40 &&
-                (site.sbi / site.tot) * 100 > 15
-              "
-            >
+            <p class="site-status text-tight fw-bold mb-xl-0 mb-2" v-else-if="
+              (site.sbi / site.tot) * 100 < 40 &&
+              (site.sbi / site.tot) * 100 > 15
+            ">
               供車狀況：緊繃
             </p>
-            <p
-              class="site-status text-danger fw-bold mb-xl-0 mb-2"
-              v-else-if="(site.sbi / site.tot) * 100 <= 15"
-            >
+            <p class="site-status text-danger fw-bold mb-xl-0 mb-2" v-else-if="(site.sbi / site.tot) * 100 <= 15">
               供車狀況：不足
             </p>
           </div>
@@ -100,22 +62,14 @@
             </div>
           </div>
           <div class="progress">
-            <div
-              class="progress-bar bg-success"
-              :class="{
-                'bg-warning': (site.sbi / site.tot) * 100 < 40,
-                'bg-danger': (site.sbi / site.tot) * 100 < 15,
-              }"
-              role="progressbar"
-              :style="{ width: (site.sbi / site.tot) * 100 + '%' }"
-              :aria-valuenow="site.sbi"
-              aria-valuemin="0"
-              :aria-valuemax="site.tot"
-            ></div>
+            <div class="progress-bar bg-success" :class="{
+              'bg-warning': (site.sbi / site.tot) * 100 < 40,
+              'bg-danger': (site.sbi / site.tot) * 100 < 15,
+            }" role="progressbar" :style="{ width: (site.sbi / site.tot) * 100 + '%' }" :aria-valuenow="site.sbi"
+              aria-valuemin="0" :aria-valuemax="site.tot"></div>
           </div>
         </div>
-        <div
-          class="
+        <div class="
             err-msg
             col-xl-7 col-md-9
             d-flex
@@ -123,14 +77,11 @@
             justify-content-center
             align-items-center
             mt-4
-          "
-          v-if="pageData.length === 0 && !errStatus"
-        >
+          " v-if="pageData.length === 0 && !errStatus">
           <i class="bi bi-emoji-dizzy-fill"></i>
           <p class="h2 pt-4">找不到"{{ search }}"相關站點，請重新搜尋。</p>
         </div>
-        <div
-          class="
+        <div class="
             err-msg
             col-xl-7 col-md-9
             d-flex
@@ -138,18 +89,12 @@
             justify-content-center
             align-items-center
             mt-4
-          "
-          v-if="errStatus"
-        >
+          " v-if="errStatus">
           <i class="bi bi-emoji-dizzy-fill"></i>
           <p class="h2 pt-4">連線錯誤。</p>
         </div>
       </div>
-      <Pagination
-        :page="pages"
-        @switch-page="setPage"
-        v-if="pageData.length !== 0"
-      ></Pagination>
+      <Pagination :page="pages" @switch-page="setPage" v-if="pageData.length !== 0"></Pagination>
     </div>
     <footer class="bg-dark text-light py-3 text-center">
       <p class="mb-1">Copyright © 2022 moonstrand</p>

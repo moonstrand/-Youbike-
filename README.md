@@ -3,7 +3,7 @@
 原先為撈取桃園各站點資訊，但後續因受到 CORS 策略保護無法正常抓到 JSON 資料，故改為撈取台中站點
 
 ### Demo ###
-https://moonstrand.github.io/youbike-taoyuan/
+https://moonstrand.github.io/youbike-taichung/
 
 
 
